@@ -1,0 +1,7 @@
+*.csv
+*.pth
+__pycache__/
+models/
+*.json
+*.parquet
+*.jsonl
