@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-export CUDA_VISIBLE_DEVICES='6,7'
+export CUDA_VISIBLE_DEVICES='4,5'
 
 # vllm serve /raid/data/models/openai/gpt-oss-20b \
 #   --tensor-parallel-size 2 \
@@ -19,9 +19,9 @@ export CUDA_VISIBLE_DEVICES='6,7'
 #   --reasoning-parser qwen3 \
 #   --port 8008 \
 
-vllm serve /raid/data/models/Qwen3-8B \
+vllm serve /raid/data/zyj/models/behavioral_clone_11210053_fsdp/train_epoch_4 \
   --tensor-parallel-size 2 \
-  --gpu-memory-utilization 0.9 \
+  --gpu-memory-utilization 0.95 \
   --max-model-len 32768 \
   --reasoning-parser qwen3 \
-  --port 8088 \
+  --port 8081 \

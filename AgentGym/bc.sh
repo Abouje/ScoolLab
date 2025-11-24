@@ -1,8 +1,8 @@
 
 export WANDB_API_KEY="7e628906e0a39f2ac07de2fe7ce63662ae19b96c"
-export CUDA_VISIBLE_DEVICES="0,1"
+export CUDA_VISIBLE_DEVICES="4,5"
 timestamp=$(date -d "+8 hours" +%m%d%H%M)
-exp_name="behavioral_clone_${timestamp}_fsdp"
+exp_name="bc_${timestamp}_cleaned"
 
 n_epochs='4'
 
@@ -12,14 +12,14 @@ main_process_port='8897'
 config_file="/home/liang/.cache/huggingface/accelerate/default_config.yaml"
 
 # training arguments
-train_file='/raid/data/datasets/AgentTraj-L/mix_data_4tasks.json'
+train_file='/raid/data/zyj/AgentGym/data/merged_agent_traj.json'
 model_train_path="/raid/data/models/Qwen3-8B"
 model_save_path="/raid/data/zyj/models/${exp_name}/"
 
 batch_size="8"
 eval_batch_size="1"
 gradient_accumulation_steps="2"
-max_input_length="4096"
+max_input_length="$((32*1024))"
 num_workers="8"
 learning_rate="1e-5"
 weight_decay="0"
